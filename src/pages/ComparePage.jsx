@@ -28,7 +28,7 @@ function useLoanState(seed) {
 
 function LoanColumn({ title, accent, loan, currencySymbol, currency, isWinner }) {
   return (
-    <div className="tenor-card p-6 sm:p-7 relative">
+    <div className="tenor-card p-6 sm:p-7 relative min-w-0 w-full max-w-full box-border">
       <div className="flex items-center gap-2 mb-6">
         <span
           className="flex h-7 w-7 items-center justify-center rounded-lg text-xs font-bold text-white shrink-0"
@@ -130,17 +130,17 @@ export function ComparePage() {
   const overallWinner = loanA.totalAmount <= loanB.totalAmount ? 'A' : 'B';
 
   return (
-    <div>
-      <header className="mb-8 text-center">
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-[var(--text-heading)] tracking-tight transition-colors duration-300 ease-out">
+    <div className="w-full max-w-full overflow-x-hidden box-border">
+      <header className="mb-8 px-5 max-w-full overflow-hidden text-center box-border">
+        <h1 className="max-w-full break-words text-3xl sm:text-4xl font-extrabold text-[var(--text-heading)] tracking-tight transition-colors duration-300 ease-out">
           Compare two loans
         </h1>
-        <p className="mt-2 text-[var(--text-subheading)] text-sm sm:text-base max-w-md mx-auto transition-colors duration-300 ease-out">
+        <p className="mt-2 max-w-full break-words text-[var(--text-subheading)] text-sm sm:text-base sm:max-w-md mx-auto transition-colors duration-300 ease-out">
           Tweak each loan independently and see which one actually costs you less.
         </p>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-full box-border">
         <LoanColumn
           title="Loan A"
           accent="#7C3AED"
@@ -159,7 +159,7 @@ export function ComparePage() {
         />
       </div>
 
-      <section className="tenor-card p-6 sm:p-7 mt-6">
+      <section className="tenor-card p-6 sm:p-7 mt-6 min-w-0 w-full max-w-full box-border">
         <h2 className="text-base font-semibold text-slate-900 mb-4">Comparison summary</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
