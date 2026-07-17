@@ -5,6 +5,8 @@ import { ResultCard } from './components/ResultCard';
 import { PayoffPieChart } from './components/PayoffPieChart';
 import { AmortizationTable } from './components/AmortizationTable';
 import { CurrencySelect } from './components/CurrencySelect';
+import { DownloadPdfButton } from './components/DownloadPdfButton';
+import { Footer } from './components/Footer';
 import { LOAN_TYPES, computeAmortizationSchedule, computeSummary } from './lib/loanMath';
 import { DEFAULT_CURRENCY, getCurrency } from './lib/currency';
 
@@ -15,6 +17,8 @@ function App() {
   const [years, setYears] = useState(20);
   const [currency, setCurrency] = useState(DEFAULT_CURRENCY);
   const currencySymbol = getCurrency(currency).symbol;
+
+  const loanTypeLabel = LOAN_TYPES.find((t) => t.id === loanType).label;
 
   const handleLoanTypeChange = (id) => {
     const type = LOAN_TYPES.find((t) => t.id === id);
@@ -69,7 +73,6 @@ function App() {
             label="Monthly Payment"
             value={monthly}
             currency={currency}
-            emphasis
             accent="#7C3AED"
             icon={
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
@@ -92,7 +95,7 @@ function App() {
             label="Total Amount"
             value={totalAmount}
             currency={currency}
-            accent="#0F172A"
+            accent="#16A34A"
             icon={
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 6v12a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V6M4 6l2-3h12l2 3M9 11h6" />
@@ -153,12 +156,21 @@ function App() {
         {/* Amortization table */}
         <section className="rounded-2xl bg-white shadow-[0_1px_2px_rgba(15,23,42,0.06),0_12px_32px_-12px_rgba(15,23,42,0.35)] p-6 sm:p-7">
           <AmortizationTable key={`${loanType}-${years}`} rows={schedule} currency={currency} />
+          <DownloadPdfButton
+            loanTypeLabel={loanTypeLabel}
+            amount={amount}
+            rate={rate}
+            years={years}
+            monthly={monthly}
+            totalInterest={totalInterest}
+            totalAmount={totalAmount}
+            schedule={schedule}
+            currency={currency}
+          />
         </section>
-
-        <footer className="mt-10 text-center text-xs text-slate-500">
-          Estimates only — actual loan terms vary by lender.
-        </footer>
       </div>
+
+      <Footer />
     </div>
   );
 }

@@ -8,9 +8,9 @@ export function AmortizationTable({ rows, currency }) {
         <span className="text-xs text-slate-500">{rows.length} year{rows.length === 1 ? '' : 's'}</span>
       </div>
 
-      <div className="max-h-96 overflow-auto rounded-xl border border-slate-200 scrollbar-thin">
+      <div className="overflow-x-auto rounded-xl border border-slate-200">
         <table className="w-full min-w-[560px] border-collapse text-sm">
-          <thead className="sticky top-0 z-10">
+          <thead>
             <tr className="bg-slate-50">
               <th className="px-4 py-3 text-left font-medium text-slate-500 border-b border-slate-200">
                 Year
@@ -30,7 +30,7 @@ export function AmortizationTable({ rows, currency }) {
             {rows.map((row) => (
               <tr
                 key={row.year}
-                className="odd:bg-white even:bg-slate-50/70 hover:bg-violet-50/60 transition-colors duration-200 ease-out"
+                className="odd:bg-white even:bg-[#F9FAFB] hover:bg-violet-50 transition-colors duration-200 ease-out"
               >
                 <td className="px-4 py-2.5 text-left font-semibold text-slate-700 tabular-nums">
                   {row.year}

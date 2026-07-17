@@ -173,6 +173,24 @@ body {
   border-radius: 9999px;
 }
 
+@media (max-width: 640px) {
+  .tenor-slider {
+    height: 10px;
+  }
+
+  .tenor-slider::-webkit-slider-thumb {
+    width: 28px;
+    height: 28px;
+    border-width: 4px;
+  }
+
+  .tenor-slider::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+    border-width: 4px;
+  }
+}
+
 /* ---------- misc ---------- */
 .fade-in-up {
   animation: fadeInUp 0.5s ease both;
