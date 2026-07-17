@@ -59,3 +59,35 @@ export function computeAmortizationSchedule(principal, annualRatePct, years) {
 
   return rows;
 }
+
+/**
+ * Amortizes a loan with a fixed extra payment applied every month on top
+ * of the standard payment, returning how much sooner it pays off.
+ */
+export function computeSummaryWithExtraPayment(principal, annualRatePct, years, extraMonthly) {
+  const n = years * 12;
+  const r = annualRatePct / 100 / 12;
+  const monthly = computeMonthlyPayment(principal, annualRatePct, years);
+  const payment = monthly + Math.max(extraMonthly, 0);
+
+  let balance = principal;
+  let totalInterest = 0;
+  let months = 0;
+
+  while (balance > 0 && months < n) {
+    const interestPortion = balance * r;
+    let principalPortion = payment - interestPortion;
+    if (principalPortion <= 0) break;
+    if (principalPortion > balance) principalPortion = balance;
+    balance -= principalPortion;
+    totalInterest += interestPortion;
+    months += 1;
+  }
+
+  return {
+    monthly,
+    months,
+    totalInterest,
+    totalAmount: principal + totalInterest,
+  };
+}

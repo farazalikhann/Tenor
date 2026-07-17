@@ -25,7 +25,7 @@ export function PayoffPieChart({ principal, totalInterest, totalAmount, currency
 
   return (
     <div>
-      <div className="relative h-64 sm:h-72">
+      <div className="relative h-64 sm:h-72 max-w-[280px] sm:max-w-none mx-auto">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie

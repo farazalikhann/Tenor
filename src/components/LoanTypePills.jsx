@@ -29,7 +29,7 @@ export function LoanTypePills({ activeType, onChange }) {
     <div
       role="tablist"
       aria-label="Loan type"
-      className="inline-flex items-center gap-1 rounded-full bg-navy-800/70 p-1.5 border border-white/5 backdrop-blur-sm"
+      className="inline-flex items-center gap-1 rounded-full bg-[var(--pill-bg)] p-1.5 border border-[var(--pill-border)] backdrop-blur-sm transition-colors duration-300 ease-out"
     >
       {LOAN_TYPES.map((type) => {
         const isActive = type.id === activeType;
@@ -39,10 +39,10 @@ export function LoanTypePills({ activeType, onChange }) {
             role="tab"
             aria-selected={isActive}
             onClick={() => onChange(type.id)}
-            className={`relative flex items-center gap-2 rounded-full px-4 sm:px-5 py-2.5 text-sm font-medium transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 ${
+            className={`tap-target relative flex items-center gap-2 rounded-full px-4 sm:px-5 py-2.5 text-sm font-medium transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 ${
               isActive
                 ? 'bg-gradient-to-b from-violet-500 to-violet-700 text-white shadow-[0_0_0_1px_rgba(167,139,250,0.4),0_8px_24px_-4px_rgba(124,58,237,0.65)]'
-                : 'text-slate-400 hover:text-slate-100 hover:bg-white/5'
+                : 'text-[var(--text-inactive)] hover:text-[var(--text-heading)] hover:bg-white/5'
             }`}
           >
             <svg

@@ -12,7 +12,7 @@ export function AmortizationTable({ rows, currency }) {
         <table className="w-full min-w-[560px] border-collapse text-sm">
           <thead>
             <tr className="bg-slate-50">
-              <th className="px-4 py-3 text-left font-medium text-slate-500 border-b border-slate-200">
+              <th className="sticky-col bg-slate-50 px-4 py-3 text-left font-medium text-slate-500 border-b border-r border-slate-200">
                 Year
               </th>
               <th className="px-4 py-3 text-right font-medium text-slate-500 border-b border-slate-200">
@@ -32,7 +32,7 @@ export function AmortizationTable({ rows, currency }) {
                 key={row.year}
                 className="odd:bg-white even:bg-[#F9FAFB] hover:bg-violet-50 transition-colors duration-200 ease-out"
               >
-                <td className="px-4 py-2.5 text-left font-semibold text-slate-700 tabular-nums">
+                <td className="sticky-col bg-inherit px-4 py-2.5 text-left font-semibold text-slate-700 tabular-nums border-r border-slate-200/70">
                   {row.year}
                 </td>
                 <td className="px-4 py-2.5 text-right text-slate-600 tabular-nums">

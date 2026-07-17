@@ -23,7 +23,7 @@ export function SliderField({
     <div>
       <div className="flex items-center justify-between mb-3">
         <label className="text-sm font-medium text-slate-600">{label}</label>
-        <div className="flex items-center rounded-lg border border-slate-200 bg-slate-50 focus-within:border-violet-400 focus-within:ring-2 focus-within:ring-violet-500/20 transition-all duration-300 ease-out">
+        <div className="tap-target flex items-center rounded-lg border border-slate-200 bg-slate-50 focus-within:border-violet-400 focus-within:ring-2 focus-within:ring-violet-500/20 transition-all duration-300 ease-out">
           {prefix && (
             <span className="pl-2.5 text-sm text-slate-400 select-none">{prefix}</span>
           )}
