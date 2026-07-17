@@ -15,7 +15,7 @@ jobs:
           cache: npm
 
       - run: npm ci
-      - run: npm run build
+      - run: npm run build:android
       - run: npx cap sync android
 
       - uses: actions/setup-java@v4

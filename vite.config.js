@@ -3,9 +3,14 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
+// The Capacitor-bundled Android app serves files from its own WebView root
+// (no /Tenor/ subpath exists there), while GitHub Pages serves from
+// /Tenor/. CAP_BUILD switches which one this build targets.
+const isCapacitorBuild = process.env.CAP_BUILD === 'true'
+
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/Tenor/',
+  base: isCapacitorBuild ? '/' : '/Tenor/',
   plugins: [
     react(),
     tailwindcss(),
