@@ -4,7 +4,6 @@ const LINKS = [
   { label: 'About', to: '/about' },
   { label: 'How it works', to: '/how-it-works' },
   { label: 'Privacy Policy', to: '/privacy' },
-  { label: 'Contact', to: '/contact' },
 ];
 
 export function Footer() {
