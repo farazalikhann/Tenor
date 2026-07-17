@@ -1,4 +1,11 @@
-const LINKS = ['About', 'How it works', 'Privacy Policy', 'Contact'];
+import { Link } from 'react-router-dom';
+
+const LINKS = [
+  { label: 'About', to: '/about' },
+  { label: 'How it works', to: '/how-it-works' },
+  { label: 'Privacy Policy', to: '/privacy' },
+  { label: 'Contact', to: '/contact' },
+];
 
 export function Footer() {
   return (
@@ -24,24 +31,25 @@ export function Footer() {
             className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
           >
             {LINKS.map((link) => (
-              <a
-                key={link}
-                href="#"
+              <Link
+                key={link.label}
+                to={link.to}
                 className="text-sm text-[var(--text-subheading)] hover:text-[var(--text-heading)] transition-colors duration-200 ease-out"
               >
-                {link}
-              </a>
+                {link.label}
+              </Link>
             ))}
           </nav>
 
           <p className="text-sm text-[var(--text-subheading)] whitespace-nowrap transition-colors duration-300 ease-out">
-            Made with <span className="text-rose-400">♥</span> for smart borrowers
+            Made with <span className="text-rose-400">♥</span> by{' '}
+            <span className="text-violet-600 font-medium">Faraz</span>
           </p>
         </div>
 
         <div className="mt-8 pt-6 border-t border-[var(--nav-border)] text-center text-xs text-[var(--text-subheading)] transition-colors duration-300 ease-out">
-          © {new Date().getFullYear()} Tenor. All rights reserved. Estimates only — actual loan
-          terms vary by lender.
+          © 2026 Tenor. Built by <span className="text-violet-600 font-medium">Faraz</span>. All
+          rights reserved.
         </div>
       </div>
     </footer>

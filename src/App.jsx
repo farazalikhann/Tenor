@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Nav } from './components/nav/Nav';
 import { CurrencySelect } from './components/CurrencySelect';
 import { Footer } from './components/Footer';
@@ -6,19 +7,31 @@ import { CalculatorPage } from './pages/CalculatorPage';
 import { ComparePage } from './pages/ComparePage';
 import { PrepayPage } from './pages/PrepayPage';
 import { SettingsPage } from './pages/SettingsPage';
+import { AboutPage } from './pages/AboutPage';
+import { HowItWorksPage } from './pages/HowItWorksPage';
+import { PrivacyPage } from './pages/PrivacyPage';
+import { ContactPage } from './pages/ContactPage';
 import { useSettings } from './context/SettingsContext';
 
-const PAGES = {
+const TAB_PAGES = {
   calculator: CalculatorPage,
   compare: ComparePage,
   prepay: PrepayPage,
   settings: SettingsPage,
 };
 
+function CalculatorShell({ activeTab }) {
+  const ActivePage = TAB_PAGES[activeTab];
+  return (
+    <div key={activeTab} className="tab-fade">
+      <ActivePage />
+    </div>
+  );
+}
+
 function App() {
   const [activeTab, setActiveTab] = useState('calculator');
   const { currency, setCurrency } = useSettings();
-  const ActivePage = PAGES[activeTab];
 
   return (
     <div className="relative min-h-screen">
@@ -44,9 +57,14 @@ function App() {
             <CurrencySelect value={currency} onChange={setCurrency} />
           </div>
 
-          <div key={activeTab} className="tab-fade">
-            <ActivePage />
-          </div>
+          <Routes>
+            <Route path="/" element={<CalculatorShell activeTab={activeTab} />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/how-it-works" element={<HowItWorksPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
         </div>
 
         <Footer />

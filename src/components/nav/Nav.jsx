@@ -1,3 +1,5 @@
+import { useLocation, useNavigate } from 'react-router-dom';
+
 const TABS = [
   {
     id: 'calculator',
@@ -48,6 +50,15 @@ function TabIcon({ icon, className }) {
 }
 
 export function Nav({ activeTab, onChange }) {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const onHome = location.pathname === '/';
+
+  const handleTabClick = (id) => {
+    onChange(id);
+    if (!onHome) navigate('/');
+  };
+
   return (
     <>
       {/* Mobile bottom bar */}
@@ -56,14 +67,14 @@ export function Nav({ activeTab, onChange }) {
         className="nav-surface bottom-nav-safe-area fixed inset-x-0 bottom-0 z-20 flex items-stretch justify-around border-t sm:hidden"
       >
         {TABS.map((tab) => {
-          const isActive = tab.id === activeTab;
+          const isActive = onHome && tab.id === activeTab;
           return (
             <button
               key={tab.id}
               type="button"
               role="tab"
               aria-selected={isActive}
-              onClick={() => onChange(tab.id)}
+              onClick={() => handleTabClick(tab.id)}
               className="tap-target relative flex flex-1 flex-col items-center justify-center gap-1 py-2.5 transition-colors duration-300 ease-out"
             >
               <TabIcon
@@ -104,14 +115,14 @@ export function Nav({ activeTab, onChange }) {
         </div>
 
         {TABS.map((tab) => {
-          const isActive = tab.id === activeTab;
+          const isActive = onHome && tab.id === activeTab;
           return (
             <button
               key={tab.id}
               type="button"
               role="tab"
               aria-selected={isActive}
-              onClick={() => onChange(tab.id)}
+              onClick={() => handleTabClick(tab.id)}
               className={`tap-target flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors duration-300 ease-out ${
                 isActive
                   ? 'bg-violet-500/10 text-violet-400'
