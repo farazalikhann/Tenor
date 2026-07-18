@@ -1,4 +1,5 @@
 import { ContentPageHeader } from '../components/ContentPageHeader';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 const SECTIONS = [
   {
@@ -28,6 +29,8 @@ const SECTIONS = [
 ];
 
 export function PrivacyPage() {
+  useDocumentTitle('Privacy Policy | Tenor Loan Calculator');
+
   return (
     <div className="tab-fade">
       <ContentPageHeader title="Privacy Policy" subtitle="Last updated: July 2026" />

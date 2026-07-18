@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://farazalikhann.github.io/Tenor/sitemap.xml

@@ -5,6 +5,7 @@ import { useSettings } from '../context/SettingsContext';
 import { computeSummary, computeSummaryWithExtraPayment } from '../lib/loanMath';
 import { formatCurrency } from '../lib/format';
 import { getCurrency } from '../lib/currency';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 const PRESETS = [100, 250, 500, 1000];
 
@@ -27,6 +28,8 @@ function formatMonthYear(date) {
 }
 
 export function PrepayPage() {
+  useDocumentTitle('Loan Prepayment Calculator – Save on Interest | Tenor');
+
   const calc = useCalculator();
   const { currency } = useSettings();
   const currencySymbol = getCurrency(currency).symbol;

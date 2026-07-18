@@ -1,4 +1,5 @@
 import { ContentPageHeader } from '../components/ContentPageHeader';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 const STEPS = [
   {
@@ -41,6 +42,8 @@ const FAQS = [
 ];
 
 export function HowItWorksPage() {
+  useDocumentTitle('How Tenor Works – Loan Calculator Guide & FAQ');
+
   return (
     <div className="tab-fade">
       <ContentPageHeader title="How Tenor Works" subtitle="3 simple steps to loan clarity" />

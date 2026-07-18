@@ -8,6 +8,7 @@ import { useSettings } from '../context/SettingsContext';
 import { LOAN_TYPES, computeSummary } from '../lib/loanMath';
 import { formatCurrency } from '../lib/format';
 import { getCurrency } from '../lib/currency';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 function useLoanState(seed) {
   const [loanType, setLoanTypeRaw] = useState(seed.loanType);
@@ -113,6 +114,8 @@ function ReceiptIcon() {
 }
 
 export function ComparePage() {
+  useDocumentTitle('Compare Loans Side by Side | Tenor');
+
   const calc = useCalculator();
   const { currency } = useSettings();
   const currencySymbol = getCurrency(currency).symbol;

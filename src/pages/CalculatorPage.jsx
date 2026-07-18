@@ -8,8 +8,11 @@ import { useCalculator } from '../context/CalculatorContext';
 import { useSettings } from '../context/SettingsContext';
 import { LOAN_TYPES } from '../lib/loanMath';
 import { getCurrency } from '../lib/currency';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 export function CalculatorPage() {
+  useDocumentTitle('Tenor – Free Loan EMI Calculator & Loan Comparison Tool');
+
   const {
     loanType,
     amount,

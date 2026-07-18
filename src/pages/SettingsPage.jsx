@@ -5,6 +5,7 @@ import { FACTORY_DEFAULTS, useSettings } from '../context/SettingsContext';
 import { useCalculator } from '../context/CalculatorContext';
 import { CURRENCIES } from '../lib/currency';
 import { LOAN_TYPES } from '../lib/loanMath';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 const APP_VERSION = '1.0.0';
 
@@ -18,6 +19,8 @@ function SettingsSection({ title, children }) {
 }
 
 export function SettingsPage() {
+  useDocumentTitle('Settings | Tenor');
+
   const { theme, setTheme } = useTheme();
   const { currency, setCurrency, defaults, setDefaults, resetDefaultsToFactory } = useSettings();
   const calc = useCalculator();

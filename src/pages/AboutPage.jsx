@@ -1,4 +1,5 @@
 import { ContentPageHeader } from '../components/ContentPageHeader';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 const FEATURES = [
   {
@@ -19,6 +20,8 @@ const FEATURES = [
 ];
 
 export function AboutPage() {
+  useDocumentTitle('About Tenor – Free Loan & EMI Calculator');
+
   return (
     <div className="tab-fade">
       <ContentPageHeader title="About Tenor" subtitle="Smart loan decisions start here" />
